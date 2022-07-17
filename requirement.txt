@@ -1,0 +1,4 @@
+baidu-api==0.0.2
+Pillow==9.2.0
+selenium==4.3.0
+toml==0.10.2

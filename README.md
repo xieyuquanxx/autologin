@@ -2,7 +2,11 @@
 - selenium
 - pillow
 - baidu_api
+- toml
 - Chrome浏览器及 ChromeDriver
+
+## 安装依赖
+在项目根目录下执行`pip install -r requirement.txt`
 
 ChromeDriver下载地址: https://sites.google.com/a/chromium.org/chromedriver/home
 根据浏览器版本下载对应的文件并将其放在python安装目录环境下。
@@ -19,3 +23,6 @@ ChromeDriver was started successfully.
 
 # 使用方法
 使用**PyCharm**打开本项目，点击运行。
+
+# 期末成绩查询
+需先配置`config.toml`，填入教务系统的用户名和密码即可。
