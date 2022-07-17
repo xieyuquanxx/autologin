@@ -4,6 +4,7 @@ import json
 import time
 
 import requests
+import toml
 from PIL import Image
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -15,7 +16,7 @@ def get_captcha():
     captcha_id = "SafeCodeImg"
     png = browser.find_element(By.ID, captcha_id).screenshot("capt.png")
     img = Image.open("capt.png").convert("L")  # P转换为L模式
-    count = 95  # 设定阈值
+    count = 105  # 设定阈值
     table = []
     for i in range(256):
         if i < count:
@@ -46,8 +47,10 @@ def get_captcha():
 
 # 输入用户名和密码
 def input_info():
-    account = "8208190106"
-    password = "330326200106241818"
+    info = toml.load("config.toml")
+    account, password = info["user"].values()
+    # account = info["user"].account
+    # password = info["user"].password
 
     browser.find_element(By.ID, "userAccount").send_keys(account)
     browser.find_element(By.ID, "userPassword").send_keys(password)
@@ -94,7 +97,6 @@ if __name__ == '__main__':
         time.sleep(0.1)
         get_score_table()
 
-        time.sleep(5)
         browser.quit()
 
     except Exception:
